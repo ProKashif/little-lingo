@@ -51,7 +51,7 @@ function Particle({
 /** A small ring of stars flying outward — the reward for a new word or a right answer. */
 function StarBurstBase({ trigger, count = 8, distance = 130 }: Props) {
   return (
-    <View pointerEvents="none" style={styles.layer} accessible={false}>
+    <View style={styles.layer} accessible={false}>
       {Array.from({ length: count }, (_, index) => (
         <Particle
           key={index}
@@ -67,6 +67,11 @@ function StarBurstBase({ trigger, count = 8, distance = 130 }: Props) {
 export const StarBurst = memo(StarBurstBase);
 
 const styles = StyleSheet.create({
-  layer: { ...StyleSheet.absoluteFill, alignItems: 'center', justifyContent: 'center' },
+  layer: {
+    ...StyleSheet.absoluteFill,
+    pointerEvents: 'none',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   star: { position: 'absolute', fontSize: 30 },
 });
